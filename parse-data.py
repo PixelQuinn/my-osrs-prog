@@ -25,8 +25,16 @@ def parse_player_data(raw_data):
     return df
 
 
-# Sample data to test
-sample_data = "1,99,13034431\n2,99,13034431\n"
+def visualization_prep(main_data, skiller_data):
+    skills = [
+        "Overall", "Attack", "Defence", "Strength", "Hitpoints", "Ranged", "Prayer", "Magic",
+        "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting",
+        "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming",
+        "Runecrafting", "Hunter", "Construction"
+    ]
 
-parsed_data = parse_player_data(sample_data)
-print(parsed_data)
+    data = {
+        "Skill": skills, "Main Level": [main_data.loc[skill, "Level"] for skill in skills]
+    }
+
+    return data
